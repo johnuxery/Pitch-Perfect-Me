@@ -58,7 +58,6 @@ class PlaySoundsViewController: UIViewController {
     
     func playAudioWithVariablePitch(pitch: Float) {
         // Play audio with variable pitch
-        println("in playAudioWithVariablePitch")
         
         // Stop and reset audio player and audio engine
         audioPlayer.stop()
@@ -95,27 +94,23 @@ class PlaySoundsViewController: UIViewController {
     
     @IBAction func playAudioFast(sender: UIButton) {
         // Play audio fast
-        println("in playAudioFast")
         playMyAudio(2.0)
     }
     
 
     @IBAction func playAudioSlow(sender: UIButton) {
         // Play audio slowly
-        println("in playAudioSlow")
         playMyAudio(0.5)
     }
 
     
     @IBAction func playAudioHigh(sender: UIButton) {
         // When chipmunk button is pressed, play audio high like a chipmunk
-        println("in playAudioHigh")
         playAudioWithVariablePitch(1000)
     }
     
     
     @IBAction func playDarthvaderAudio(sender: UIButton) {
         // When darthvader button is pressed, play audio low like darth vader
-        println("in playDarthvaderAudio")
         playAudioWithVariablePitch(-1000)}
 }

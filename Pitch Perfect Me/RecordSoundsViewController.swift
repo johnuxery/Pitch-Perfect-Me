@@ -43,7 +43,6 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     @IBAction func recordAudio(sender: UIButton) {
         // When record button is pressed, record audio
         
-        println("in recordAudio")
         // Setup path to recorded audio file
         let dirPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
         
@@ -77,12 +76,9 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     func audioRecorderDidFinishRecording(recorder: AVAudioRecorder!, successfully flag: Bool) {
         // When audio recorder finishes perform the following
         
-        println("in audioRecorderDidFinish")
         if(flag){
             // Save the recorded audio
-            recordedAudio = RecordedAudio()
-            recordedAudio.filePathUrl = recorder.url
-            recordedAudio.title = recorder.url.lastPathComponent
+            recordedAudio = RecordedAudio(filePathUrl: recorder.url, title: recorder.url.lastPathComponent!)
         
             //Stop recording the users voice
             self.performSegueWithIdentifier("stopRecording", sender: recordedAudio)
@@ -108,7 +104,6 @@ class RecordSoundsViewController: UIViewController, AVAudioRecorderDelegate {
     @IBAction func stopRecording(sender: UIButton) {
         // When Stop is pressed, stop recording
         
-        println("in stopRecording")
         recordingInProgress.hidden = true
         audioRecorder.stop()
         var audioSession = AVAudioSession.sharedInstance()
